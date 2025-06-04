@@ -1,9 +1,15 @@
-import { useState } from 'react'
 
+import Component from './Component.jsx'
 function App() {
   return (
-    <h1>Vishal Tamhane</h1>
+    <div>
+      <h1>Vishal Tamhane</h1>
+      <div>Hello developer</div>
+      <Component/>
+    </div>
+    
+    
   )
 }
-
 export default App
+
