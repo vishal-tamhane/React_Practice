@@ -54,12 +54,22 @@ export default function Header() {
                             </li>
                             <li>
                                 <NavLink
-                                to="/layout"
+                                to="/user"
                                     className={({isActive}) =>
                                         `${isActive} block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
                                     }
                                 >
-                                    Layout
+                                    User
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                to="/github"
+                                    className={({isActive}) =>
+                                        `${isActive} block py-2 pr-4 pl-3 duration-200 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 hover:text-orange-700 lg:p-0`
+                                    }
+                                >
+                                    Github
                                 </NavLink>
                             </li>
                             <li>
