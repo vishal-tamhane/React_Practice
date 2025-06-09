@@ -2,12 +2,14 @@ import { useState } from 'react'
 import './App.css'
 import Form from './components/Form'
 import Item from './components/Item'
+import {TodoProvider} from "./contexts"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todos, setTodos] = useState([])
 
+  const addTodo = (todo) =>{}
   return (
-    <>
+    <TodoProvider value ={{todos ,addTodo,updateTodo}}>
       <h2 className='p-4  m-10 bg-pink-700 text-black text-center'>To-Do List</h2>
       <div className="bg-[#172842] min-h-screen py-8">
                 <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
@@ -22,7 +24,7 @@ function App() {
                     </div>
                 </div>
             </div>
-    </>
+    </TodoProvider>
   )
 }
 
