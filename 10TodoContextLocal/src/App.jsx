@@ -5,7 +5,12 @@ import Item from './components/Item'
 import {TodoProvider} from "./contexts"
 
 function App() {
-  const [todos, setTodos] = useState([])
+  // const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+  const storedTodos = localStorage.getItem('todos');
+  return storedTodos ? JSON.parse(storedTodos) : [];
+});
+
 
   const addTodo = (todo) =>{
     setTodos((prev) => [{id: Date.now(),...todo} , ...prev])
@@ -20,7 +25,7 @@ function App() {
   }
 
   const toggleComplete = (id) =>{
-    setTodos((prev) => prev.map((prevTodo) => prevTodo === id ? {...prevTodo , completed:!prevTodo.completed} : prevTodo))
+    setTodos((prev) => prev.map((prevTodo) => prevTodo.id === id ? {...prevTodo , completed:!prevTodo.completed} : prevTodo))
   }
 
   // Load todos from localStorage on initial render
@@ -37,7 +42,7 @@ function App() {
   }, [todos])
 
   return (
-    <TodoProvider value ={{todos ,addTodo,updateTodo}}>
+    <TodoProvider value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}>
       <h2 className='p-4  m-10 bg-pink-700 text-black text-center'>To-Do List</h2>
       <div className="bg-[#172842] min-h-screen py-8">
                 <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
@@ -51,8 +56,12 @@ function App() {
                         {/*Loop and Add TodoItem here */}
                         {/* <Item /> */}
                         {todos.map((todo) => (
-        <Item key={todo.id} todo={todo} />
-    ))}
+                          <div key = {todo.id} className="w-full"
+                          >
+                            <Item todo={todo}/>
+                          </div>
+                            
+                        ))}
                     </div>
                 </div>
             </div>
