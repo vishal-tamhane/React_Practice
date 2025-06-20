@@ -1,5 +1,22 @@
+import { useState } from "react";
+import { useTodo } from "../contexts/TodoContext";
+
 function TodoItem({ todo }) {
-    
+    const [isTodoEditable, setIsTodoEditable] = useState(false);
+    const [todoMsg, setTodoMsg] = useState(todo.text);
+    // Make sure these functions exist in your context!
+    const { updateTodo, deleteTodo, toggleComplete } = useTodo();
+
+    const editTodo = () => {
+        if (!todoMsg.trim()) return; // Prevent saving empty todos
+        updateTodo(todo.id, { ...todo, text: todoMsg });
+        setIsTodoEditable(false);
+        setTodoMsg(todo.text); // Reset to original text after saving
+    };
+
+    const handleToggleComplete = () => {
+        toggleComplete(todo.id);
+    };
 
     return (
         <div
@@ -11,7 +28,7 @@ function TodoItem({ todo }) {
                 type="checkbox"
                 className="cursor-pointer"
                 checked={todo.completed}
-                onChange={toggleCompleted}
+                onChange={handleToggleComplete}
             />
             <input
                 type="text"
