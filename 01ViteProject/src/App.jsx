@@ -1,15 +1,13 @@
+import Component from "./Component";
 
-import Component from './Component.jsx'
-function App() {
-  return (
-    <div>
-      <h1>Vishal Tamhane</h1>
-      <div>Hello developer</div>
-      <Component/>
-    </div>
-    
-    
+function App(){
+  return(
+    <>
+      <h1>Sagar Tamhane</h1>
+      <div>Vishal Tamhane from app.js</div>
+      <Component />
+    </>
   )
 }
-export default App
 
+export default App;

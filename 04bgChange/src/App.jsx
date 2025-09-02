@@ -19,6 +19,7 @@ function App() {
           <button onClick ={ () => setcolor("purple")} className='py-1 px-3  rounded-2xl 'style={{backgroundColor: "purple"}}>purple</button>
           <button onClick ={ () => setcolor("brown")} className='py-1 px-3  rounded-2xl 'style={{backgroundColor: "brown"}}>brown</button>
           <button onClick ={ () => setcolor("orange")} className='py-1 px-3  rounded-2xl 'style={{backgroundColor: "orange"}}>Orange</button>
+          {/* <button onClick={() => setcolor("yellow")} className='py-0 rounded-b-2xl' style={{backgroundColor:"yellow"}}>Yellow</button> */}
         </div>
        </div>
      </div>
@@ -27,3 +28,6 @@ function App() {
 }
 
 export default App
+
+
+
